@@ -1,0 +1,17 @@
+.convertFunctionalContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    justify-content: space-evenly;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.convertFunctionalImg{
+    width: 4%;
+    height: 4%;
+}
+
+.select{
+    
+}
