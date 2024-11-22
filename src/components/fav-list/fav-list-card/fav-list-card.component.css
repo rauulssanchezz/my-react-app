@@ -1,0 +1,19 @@
+.listCard{
+    display: flex;
+    flex-direction: row;
+    background-color: #E3E3E3;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listCard img{
+    width: 3%;
+    margin-right: 2%;
+}
+
+.listCard p{
+    height: 5px;
+    margin-left: 2%;
+}

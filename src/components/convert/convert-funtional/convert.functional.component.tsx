@@ -1,8 +1,27 @@
 
 
+import React from "react";
 import "./convert.functional.component.css"
 
-const ConvertFunctional= ({ onConversion }:{onConversion: (result:number,unit:string) => void}) => {
+const ConvertFunctional= ({ 
+    selectUnit,
+    amount,
+    result,
+    setSelectUnit,
+    setUnit,
+    setAmount,
+    setResult,
+    handleOnExchange
+ }:{
+    selectUnit: string;
+    amount: number;
+    result: number;
+    setSelectUnit: (selectUnit: string) => void;
+    setUnit: (unit:string) => void;
+    setAmount: (amount: number) => void;
+    setResult: (result: number) => void;
+    handleOnExchange: (amount: number, selectUnit: string,result: number) => void;
+ }) => {
 
     const ifSelectResult =(selectValue:string,amount:number):[number,string] => {
 
@@ -38,53 +57,37 @@ const ConvertFunctional= ({ onConversion }:{onConversion: (result:number,unit:st
         return [result,unit];
     }
 
-    const onInputChange = ():void =>{
+    const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+        const newAmount = parseFloat(event.target.value);
+        setAmount(newAmount);
 
-        const select = document.getElementById('Unit') as HTMLSelectElement;
-        const input = document.getElementById('Amount') as HTMLInputElement;
-
-        const selectValue:string = select.value;
-        const amount:number = parseFloat(input.value);
-
-        const results:[number,string] = ifSelectResult(selectValue,amount);
-
-        const result:number = results[0];
-        const unit:string = results[1];
-
-        
-
-        onConversion(result,unit) ;
-
+        const [result,unit] = ifSelectResult(selectUnit,newAmount);
+        setResult(result);
+        setUnit(unit);
     }
 
-    const onExchange = ():void=>{
-        const select = document.getElementById('Unit') as HTMLSelectElement;
-        const input = document.getElementById('Amount') as HTMLInputElement;
-        const pResult = document.getElementById('pResult') as HTMLParagraphElement;
-
-        const pResultValue:string[] = pResult.textContent!.split(' ')
-
-        const selectValue:string = select.value;
-        const amount:number = parseFloat(input.value);
-
-        const obtainUnitValues:string[] = selectValue.split(' ')
-        const exchangeSelectValue = obtainUnitValues[2] + ' ' + obtainUnitValues[1] + ' ' + obtainUnitValues[0];
-
-        const exchangePSelectValue:string = obtainUnitValues[0]; 
-
-        const result:number = parseFloat(pResultValue[0]);
-
-        pResult.textContent =amount.toString() +' '+ exchangePSelectValue;
-
-        select.value=exchangeSelectValue;
-
-        input.value= result.toString();
+    const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) =>{
         
+        selectUnit = event.target.value;
+        setSelectUnit(selectUnit);
+        
+
+        const selectUnitList: string[] = selectUnit.split(' ');
+        const newUnit = selectUnitList[2];
+        setUnit(newUnit);
+
+        const [result,unit] = ifSelectResult(newUnit,amount);
+        setResult(result);
+        setUnit(unit);
+    }
+
+    const onExchange = () => {
+        handleOnExchange(amount,selectUnit,result);
     }
 
         return(
             <div className="convertFunctionalContainer">
-                <select id="Unit" className="select" onChange={onInputChange}>
+                <select id="Unit" className="select" value={selectUnit} onChange={onSelectChange}>
                     <option>km → miles</option>
                     <option>miles → km</option>
                     <option>feet → meters</option>
@@ -93,7 +96,14 @@ const ConvertFunctional= ({ onConversion }:{onConversion: (result:number,unit:st
                     <option>inches → centimeters</option>
                 </select>
                 <img className="convertFunctionalImg" src="whiteExchange.png" onClick={onExchange}/>
-                <input id="Amount" type="number" name="Result" placeholder="Result" onChange={onInputChange}>
+                <input 
+                    id="Amount"
+                    type="number" 
+                    name="Result" 
+                    placeholder="Result" 
+                    value={amount} 
+                    onChange={onInputChange}
+                >
                 
                 </input>
             </div>
