@@ -2,7 +2,17 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+.favListContainer{
+    text-align: start;
     margin-left: 28%;
     margin-right: 28%;
-    flex-wrap: wrap;
+}
+
+@media (max-width: 1017px) {
+    .favList{
+        grid-template-columns: repeat(1,1fr);
+    }
 }

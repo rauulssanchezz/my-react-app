@@ -6,6 +6,8 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .listCard img{
@@ -16,4 +18,11 @@
 .listCard p{
     height: 5px;
     margin-left: 2%;
+}
+
+@media (max-width: 471px){
+    .listCard p{
+        width: 2px;
+    }
+
 }

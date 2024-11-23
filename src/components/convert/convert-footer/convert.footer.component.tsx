@@ -3,20 +3,25 @@ import './convert.footer.component.css'
 const ConvertFooter = ({
     result,
     unit,
+    selectUnit,
+    amount,
     favList,
     setFavList
 }: {
     result: number;
     unit: string;
+    selectUnit: string;
+    amount: number;
     favList: string[],
     setFavList: (favList:string[]) => void;
 }
 )=>{
 
     const handleFavList = () => {
-        console.log('fav funciona' +favList);
+        const value: string = amount.toString()+' '+selectUnit+' '+result.toString();
         const newFavList = [...favList];
-        newFavList.push(result.toString());
+        if(!newFavList.includes(value))
+        newFavList.push(value);
         setFavList(newFavList);
     }
 

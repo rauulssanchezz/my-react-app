@@ -76,7 +76,7 @@ const ConvertFunctional= ({
         const newUnit = selectUnitList[2];
         setUnit(newUnit);
 
-        const [result,unit] = ifSelectResult(newUnit,amount);
+        const [result,unit] = ifSelectResult(selectUnit,amount);
         setResult(result);
         setUnit(unit);
     }

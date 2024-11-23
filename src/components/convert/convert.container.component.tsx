@@ -45,7 +45,6 @@ const Convert = ({
     }
 
     const handleFavList = (favList:string[]) => {
-        console.log('favList desde container'+favList)
         setFavList(favList);
     }
 
@@ -63,8 +62,15 @@ const Convert = ({
                 setAmount={handleAmount}
                 setResult={setResult}
                 handleOnExchange={handleOnExchange}
-                />
-            <ConvertFooter result={result} unit={unit} favList={favList} setFavList={handleFavList}/>
+            />
+            <ConvertFooter 
+                result={result} 
+                unit={unit} 
+                selectUnit={selectUnit} 
+                amount={amount}
+                favList={favList} 
+                setFavList={handleFavList}
+            />
         </div>
     );
 

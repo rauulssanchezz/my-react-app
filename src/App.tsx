@@ -4,13 +4,13 @@ import './App.css'
 import Convert from './components/convert/convert.container.component'
 import FavListContainer from './components/fav-list/fav-list.container.component'
 import Header from './components/header/header.component'
+import Footer from './components/footer/footer.component';
 
 function App() {
 
   const [favList,setFavList] = useState<string[]>([]);
 
   const handleFavList = (favList: string[]): void => {
-    console.log('favList desde app'+favList)
     setFavList(favList);
   }
 
@@ -22,9 +22,10 @@ function App() {
           <Convert favList={favList} setFavList={handleFavList}/>
         </div>
         <div className='container'>
-          <FavListContainer favList={favList}/>
+          <FavListContainer favList={favList} setFavList={setFavList}/>
         </div>
       </main>
+      <Footer/>
     </body>
   )
 }

@@ -18,5 +18,24 @@
 
 .convertFooterContainer p{
     height: 5px;
+    width: 100%;
+    margin-right: 10%;
 }
 
+@media(max-width:854px){
+    .convertFooterContainer img{
+        width: 20px;
+    }
+}
+
+@media(max-width:532px){
+    .convertFooterContainer p{
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:389px){
+    .convertFooterContainer p{
+        margin-right: 5px;
+    }
+}
