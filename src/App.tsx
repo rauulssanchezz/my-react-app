@@ -8,7 +8,7 @@ import Footer from './components/footer/footer.component';
 
 function App() {
 
-  const [favList,setFavList] = useState<string[]>([]);
+  const [favList,setFavList] = useState<string[]>(JSON.parse(localStorage.getItem('favList')|| '[]'));
 
   const handleFavList = (favList: string[]): void => {
     setFavList(favList);

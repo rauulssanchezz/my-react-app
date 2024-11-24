@@ -40,6 +40,16 @@ input{
     input{
         width: 100px;
     }
+
+    .convertFunctionalImg{
+        width: 6%;
+    }
+}
+
+@media(max-width:600px){
+    .convertFunctionalImg{
+        width: 8%;
+    }
 }
 
 @media(max-width:497px){
@@ -49,5 +59,9 @@ input{
 
     input{
         width: 50px;
+    }
+
+    .convertFunctionalImg{
+        width: 10%;
     }
 }

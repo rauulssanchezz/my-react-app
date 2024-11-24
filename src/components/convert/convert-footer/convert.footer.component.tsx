@@ -23,6 +23,7 @@ const ConvertFooter = ({
         if(!newFavList.includes(value))
         newFavList.push(value);
         setFavList(newFavList);
+        localStorage.setItem('favList',JSON.stringify(newFavList));
     }
 
     return(
