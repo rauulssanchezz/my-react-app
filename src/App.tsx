@@ -16,7 +16,9 @@ function App() {
 
   return (
     <body>
-      <Header/>
+      <header>
+        <Header/>
+      </header>
       <main>
         <div className='container'>
           <Convert favList={favList} setFavList={handleFavList}/>
@@ -25,7 +27,9 @@ function App() {
           <FavListContainer favList={favList} setFavList={setFavList}/>
         </div>
       </main>
-      <Footer/>
+      
+        <Footer/>
+  
     </body>
   )
 }
